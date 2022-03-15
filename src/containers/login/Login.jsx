@@ -22,7 +22,6 @@ function Login() {
                     </div>
                     <input className="login-page__login-form__input-container" type="text" placeholder="User ID*" required />
                     <input className="login-page__login-form__input-container1" type="password" placeholder="Password*" required />
-                    <div className="login-page__login-form__signup">Need an account? <p className="login-page__login-form__signup__p">Sign Up</p></div>
                     <div className="login-page__login-form__forget-password">Forgot Password?</div>
                     <div className="login-page__login-form__loginbutton"><LoginButton/></div>
                 </form>
