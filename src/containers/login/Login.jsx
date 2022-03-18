@@ -3,9 +3,6 @@ import '../../styles/containers/login/index.scss';
 import LoginButton from '../../components/buttons/LoginButton';
 
 function Login() {
-
-    
-
     return (
         <div className="login-page">
             <img className="login-page__pipe-image" src="https://source.unsplash.com/960x900/?Medical,Medical Care" alt="pipe-img" />
