@@ -5,11 +5,11 @@ import '../../styles/containers/admin/index.scss';
 
 function Admin() {
     return (
-    <div class="main-div">
-        <div class="all-Sidebar"><Sidebar/></div>
-        <div className="all-Navbar"><Navbar/></div>
-        <div className="middle-div">
-            <img src="https://www.uber-assets.com/image/upload/q_auto:eco,c_fill,w_960,h_640/v1601408477/assets/cf/01ee39-87a9-4ae6-89b7-321eeb67ad79/original/Hospitality-hero.svg" alt="error"></img>
+    <div className="main-div">
+        <Sidebar/>
+        <Navbar/>
+        <div className='image-div'>
+        <img src="https://i.pinimg.com/originals/00/5e/7b/005e7b665a61d4f71e52ad626dd3ec56.png" alt="Error" class="responsive" width="600" height="400"></img>
         </div>
     </div>
     )

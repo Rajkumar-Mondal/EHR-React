@@ -1,13 +1,12 @@
-.middle-div{
-    width: 100%;
-    height:89.5vh;
-    background-color: #E5E5E5;
-    text-align: center;
+body{
+background-color: #cbcbcb;
 }
-.main-div{
-    background-color: #E5E5E5;
+.responsive {
+width: 100%;
+max-width: 600px;
+height: auto;
 }
-.middle-div img{ 
+.image-div{
     margin-top: 5rem;
-    margin-left: 10rem;
+    text-align: center;
 }

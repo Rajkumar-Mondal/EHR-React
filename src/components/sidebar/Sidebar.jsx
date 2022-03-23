@@ -11,16 +11,16 @@ return (
 <div id="add-sidebar-manu">
 <ul>
     <li>
-    <span class="title"> <FcAbout/><a href="https://www.google.com/">Dashboard</a></span>
+    <span class="title"> <FcAbout/><a href="https://www.google.com/" class="listSize">Dashboard</a></span>
     </li>
     <li>
-    <span class="title"> <FcAbout/><a href="https://www.google.com/">New Order</a></span>
+    <span class="title"> <FcAbout/><a href="https://www.google.com/" class="listSize">New Order</a></span>
     </li>
     <li>
-    <span class="title"> <FcAbout/><a href="https://www.google.com/">Order History</a></span>
+    <span class="title"> <FcAbout/><a href="https://www.google.com/" class="listSize">Order History</a></span>
     </li>
     <li>
-    <span class="title"> <FcAbout/><a href="https://www.google.com/">Accept Return</a></span>
+    <span class="title"> <FcAbout/><a href="https://www.google.com/" class="listSize">Accept Return</a></span>
     </li>
 </ul>
 </div>
