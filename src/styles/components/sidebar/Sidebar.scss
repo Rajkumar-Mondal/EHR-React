@@ -15,20 +15,33 @@
   transition: all 0.3s ease;
   border:1px solid #c5c7c9;
 }
-.sidebar #first-img{
+
+#logo {
+  width: 100%;
+  max-width: 169px;
+  height: 25%;
   text-align: center;
 }
 
-.sidebar #first-img img{ 
-  margin-top: 2rem;
-  width:25vh;
-}
-
 #first-heading{
-  text-align:center;
+  margin-left: 30%;
   color:black;
   margin-top:5vh;
 }
 .listSize{
   font-size: 0.7rem !important;
+}
+#add-sidebar-manu ul li a{
+  display: block;
+  padding: 13px 30px;
+  border-bottom: 1px solid #10558d;
+  //color: rgb(241, 237, 237);
+  font-size: 16px;
+  position: relative;
+}
+
+#add-sidebar-manu ul li a .icon{
+  //color: #dee4ec;
+  width: 30px;
+  display: inline-block;
 }
