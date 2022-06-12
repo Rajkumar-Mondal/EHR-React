@@ -1,0 +1,13 @@
+.admin-dashboard{
+    background-color: #E5E5E5;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+.Admin-Profile{
+    position: relative;
+    left: 88%;
+}
+.admin-dashboard-logo{
+    position: absolute;
+    left: 35%;
+}

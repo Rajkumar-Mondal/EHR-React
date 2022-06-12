@@ -1,12 +1,18 @@
 import React from 'react';
 import '../../styles/containers/login/index.scss';
 import LoginButton from '../../components/buttons/LoginButton';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
 
-    
+    const navigate = useNavigate();
+    const handleLogin = () => {
+        navigate('/admin');
+    }
+
 
     return (
+
         <div className="login-page">
             <img className="login-page__pipe-image" src="https://source.unsplash.com/960x900/?Medical,Medical Care" alt="pipe-img" />
             {/* <img className="login-page__pipe-image" src="./assets/pipe.svg" alt="pipe-img" /> */}
@@ -22,8 +28,8 @@ function Login() {
                     </div>
                     <input className="login-page__login-form__input-container" type="text" placeholder="User ID*" required />
                     <input className="login-page__login-form__input-container1" type="password" placeholder="Password*" required />
-                    <div className="login-page__login-form__forget-password">Forgot Password?</div>
-                    <div className="login-page__login-form__loginbutton"><LoginButton/></div>
+                    {/* <div className="login-page__login-form__forget-password">Forgot Password?</div> */}
+                    <div className="login-page__login-form__loginbutton" onClick={handleLogin}><LoginButton value={"Login"} /></div>
                 </form>
             </div>
         </div>
