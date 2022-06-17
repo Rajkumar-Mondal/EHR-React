@@ -149,12 +149,12 @@ export default function Doctor() {
         justifyContent: "space-between",
     }
 
-    if ((localStorage.getItem("UserAccountType")) !== "doctor") {
-        navigate("/");
-        localStorage.clear();
+    // if ((localStorage.getItem("UserAccountType")) !== "doctor") {
+    //     navigate("/");
+    //     localStorage.clear();
 
 
-    } else {
+    // } else {
 
         return (
             <div className='admin-dashboard' >
@@ -208,7 +208,7 @@ export default function Doctor() {
                     </AppBar>
                     <Drawer variant="permanent" open={open}>
                         <DrawerHeader>
-                            <h3>Admin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+                            <h3>Doctor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
                             <IconButton onClick={handleDrawerClose}>
                                 {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                             </IconButton>
@@ -278,4 +278,4 @@ export default function Doctor() {
             </div>
         );
     }
-}
+// }

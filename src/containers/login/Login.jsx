@@ -49,7 +49,11 @@ function Login() {
                         'Error!',
                         data.message,
                         'error'
-                    )
+                    ).then((res) => {
+                        if (res.isConfirmed) {
+                            navigate('/');
+                        }
+                    })
                 }
             } catch (err) {
                 console.log(err);

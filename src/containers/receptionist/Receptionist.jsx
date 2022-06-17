@@ -149,10 +149,10 @@ export default function MiniDrawer() {
         justifyContent: "space-between",
     }
 
-    if ((localStorage.getItem("UserAccountType")) !== "receptionist") {
-        navigate("/");
-        localStorage.clear();
-    } else {
+    // if ((localStorage.getItem("UserAccountType")) !== "receptionist") {
+    //     navigate("/");
+    //     localStorage.clear();
+    // } else {
 
         return (
             <div className='admin-dashboard' >
@@ -206,7 +206,7 @@ export default function MiniDrawer() {
                     </AppBar>
                     <Drawer variant="permanent" open={open}>
                         <DrawerHeader>
-                            <h3>Admin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+                            <h3>Receptionist&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
                             <IconButton onClick={handleDrawerClose}>
                                 {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                             </IconButton>
@@ -276,4 +276,4 @@ export default function MiniDrawer() {
             </div>
         );
     }
-}
+// }
