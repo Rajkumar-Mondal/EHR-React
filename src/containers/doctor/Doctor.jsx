@@ -21,8 +21,9 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
 import Logo from '../../assets/images/Logo.svg';
-import Doctor_logo from '../../assets/images/doctor.svg';
-import Receptionist from '../../assets/images/receptionist.svg';
+// import Doctor_logo from '../../assets/images/doctor.svg';
+// import Receptionist from '../../assets/images/receptionist.svg';
+import Patient_logo from '../../assets/images/patient.svg';
 import History from '../../assets/images/history.svg';
 import AdminDashboardLogo from '../../assets/images/admin_dashboard.svg';
 
@@ -216,7 +217,7 @@ export default function Doctor() {
                         <Divider />
                         <br />
                         <List>
-                            {['Doctors', 'Receptionist', 'Action History'].map((text, index) => (
+                            {['Patients', 'Action History'].map((text, index) => (
                                 <ListItem key={text} disablePadding sx={{ display: 'block' }}>
                                     <ListItemButton
                                         sx={{
@@ -232,7 +233,7 @@ export default function Doctor() {
                                                 justifyContent: 'center',
                                             }}
                                         >
-                                            {index === 0 ? <img src={Doctor_logo} alt="doctor" onClick={handleDoctorslist} /> : index === 1 ? <img src={Receptionist} alt="receptionist" /> : <img src={History} alt="history" />}
+                                            {index === 0 ? <img src={Patient_logo} alt="patient logo" onClick={handleDoctorslist} /> : <img src={History} alt="history" />}
                                         </ListItemIcon>
                                         <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
                                     </ListItemButton>

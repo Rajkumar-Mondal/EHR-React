@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -21,15 +21,23 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
 import Logo from '../../assets/images/Logo.svg';
-import Doctor from '../../assets/images/doctor.svg';
-import Receptionist_logo from '../../assets/images/receptionist.svg';
+// import Doctor from '../../assets/images/doctor.svg';
+// import Receptionist_logo from '../../assets/images/receptionist.svg';
+import Patient_logo from '../../assets/images/patient.svg';
 import History from '../../assets/images/history.svg';
 import AdminDashboardLogo from '../../assets/images/admin_dashboard.svg';
 
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+// import { Rings } from 'react-loader-spinner';
+import BASE_URL from "../../config";
+import Swal from 'sweetalert2';
+// import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 import '../../styles/containers/admin/Admin.css'
+
 
 const drawerWidth = 240;
 
@@ -106,6 +114,9 @@ export default function MiniDrawer() {
     // =========================================UseState===========================================
     const [open, setOpen] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [patientList, setPatientList] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+
 
 
     const openprofile = Boolean(anchorEl);
@@ -132,8 +143,24 @@ export default function MiniDrawer() {
         setAnchorEl(null);
     }
 
-    const handleDoctorslist = () => {
-
+    const handlepatientslist = async () => {
+        try {
+            setIsLoading(true);
+            const url = BASE_URL + `/endpoint`;
+            const data = await axios.get(url);
+            setIsLoading(false);
+            if (data.success) {
+                setPatientList(data.data);
+            } else {
+                Swal.fire(
+                    'Error!',
+                    data.message,
+                    'error'
+                )
+            }
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     //==========================================Styles===========================================
@@ -154,90 +181,90 @@ export default function MiniDrawer() {
     //     localStorage.clear();
     // } else {
 
-        return (
-            <div className='admin-dashboard' >
-                <Box sx={{ display: 'flex' }}  >
-                    <CssBaseline />
-                    <AppBar position="fixed" open={open} style={navbar}>
-                        <Toolbar>
-                            <IconButton
-                                color="inherit"
-                                aria-label="open drawer"
-                                onClick={handleDrawerOpen}
-                                edge="start"
-                                sx={{
-                                    marginRight: 5,
-                                    ...(open && { display: 'none' }),
+    return (
+        <div className='admin-dashboard' >
+            <Box sx={{ display: 'flex' }}  >
+                <CssBaseline />
+                <AppBar position="fixed" open={open} style={navbar}>
+                    <Toolbar>
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            onClick={handleDrawerOpen}
+                            edge="start"
+                            sx={{
+                                marginRight: 5,
+                                ...(open && { display: 'none' }),
+                            }}
+                        >
+                            <MenuIcon style={{ color: 'black' }} />
+                        </IconButton>
+                        <div>
+                            <img src={Logo} alt="logo" />
+                        </div>
+                        <div className='Admin-Profile' >
+                            <Button
+                                id="basic-button"
+                                aria-controls={openprofile ? 'basic-menu' : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={openprofile ? 'true' : undefined}
+                                sx={{ width: 40, height: 40 }}
+                                onClick={handleClick}
+                            >
+                                {<Avatar src="/broken-image.jpg" />}
+                            </Button>
+                            <Menu
+                                id="basic-menu"
+                                anchorEl={anchorEl}
+                                open={openprofile}
+                                onClose={handleClose}
+                                MenuListProps={{
+                                    'aria-labelledby': 'basic-button',
                                 }}
                             >
-                                <MenuIcon style={{ color: 'black' }} />
-                            </IconButton>
-                            <div>
-                                <img src={Logo} alt="logo" />
-                            </div>
-                            <div className='Admin-Profile' >
-                                <Button
-                                    id="basic-button"
-                                    aria-controls={openprofile ? 'basic-menu' : undefined}
-                                    aria-haspopup="true"
-                                    aria-expanded={openprofile ? 'true' : undefined}
-                                    sx={{ width: 40, height: 40 }}
-                                    onClick={handleClick}
-                                >
-                                    {<Avatar src="/broken-image.jpg" />}
-                                </Button>
-                                <Menu
-                                    id="basic-menu"
-                                    anchorEl={anchorEl}
-                                    open={openprofile}
-                                    onClose={handleClose}
-                                    MenuListProps={{
-                                        'aria-labelledby': 'basic-button',
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
+                                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                            </Menu>
+                        </div>
+
+                    </Toolbar>
+
+                </AppBar>
+                <Drawer variant="permanent" open={open}>
+                    <DrawerHeader>
+                        <h3>Receptionist&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+                        <IconButton onClick={handleDrawerClose}>
+                            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                        </IconButton>
+                    </DrawerHeader>
+                    <Divider />
+                    <br />
+                    <List>
+                        {['Patients', 'Action History'].map((text, index) => (
+                            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+                                <ListItemButton
+                                    sx={{
+                                        minHeight: 48,
+                                        justifyContent: open ? 'initial' : 'center',
+                                        px: 2.5,
                                     }}
                                 >
-                                    <MenuItem onClick={handleClose}>Profile</MenuItem>
-                                    {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
-                                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                                </Menu>
-                            </div>
-
-                        </Toolbar>
-
-                    </AppBar>
-                    <Drawer variant="permanent" open={open}>
-                        <DrawerHeader>
-                            <h3>Receptionist&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
-                            <IconButton onClick={handleDrawerClose}>
-                                {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-                            </IconButton>
-                        </DrawerHeader>
-                        <Divider />
-                        <br />
-                        <List>
-                            {['Doctors', 'Receptionist', 'Action History'].map((text, index) => (
-                                <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-                                    <ListItemButton
+                                    <ListItemIcon
                                         sx={{
-                                            minHeight: 48,
-                                            justifyContent: open ? 'initial' : 'center',
-                                            px: 2.5,
+                                            minWidth: 0,
+                                            mr: open ? 3 : 'auto',
+                                            justifyContent: 'center',
                                         }}
                                     >
-                                        <ListItemIcon
-                                            sx={{
-                                                minWidth: 0,
-                                                mr: open ? 3 : 'auto',
-                                                justifyContent: 'center',
-                                            }}
-                                        >
-                                            {index === 0 ? <img src={Doctor} alt="doctor" onClick={handleDoctorslist} /> : index === 1 ? <img src={Receptionist_logo} alt="receptionist" /> : <img src={History} alt="history" />}
-                                        </ListItemIcon>
-                                        <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-                                    </ListItemButton>
-                                </ListItem>
-                            ))}
-                        </List>
-                        {/* <Divider />
+                                        {index === 0 ? <img src={Patient_logo} alt="patient logo" onClick={handlepatientslist} /> : <img src={History} alt="history" />}
+                                    </ListItemIcon>
+                                    <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                                </ListItemButton>
+                            </ListItem>
+                        ))}
+                    </List>
+                    {/* <Divider />
                         <List>
                             {['All mail', 'Trash', 'Spam'].map((text, index) => (
                                 <ListItem key={text} disablePadding sx={{ display: 'block' }}>
@@ -262,18 +289,18 @@ export default function MiniDrawer() {
                                 </ListItem>
                             ))}
                         </List> */}
-                    </Drawer>
-                    <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-                        <DrawerHeader />
-                        <div className='admin-dashboard-logo' >
-                            <img src={AdminDashboardLogo} alt="Admin-Dashboar-logo" />
-                        </div>
-                        {/* <Typography paragraph>
-                            Lorem ipsum dolor sit
-                        </Typography> */}
-                    </Box>
+                </Drawer>
+                <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+                    <DrawerHeader />
+                    <div className='admin-dashboard-logo' >
+                        <img src={AdminDashboardLogo} alt="Admin-Dashboar-logo" />
+                    </div>
+                    <Typography paragraph>
+                        Lorem ipsum dolor sit
+                    </Typography>
                 </Box>
-            </div>
-        );
-    }
+            </Box>
+        </div>
+    );
+}
 // }

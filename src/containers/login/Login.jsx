@@ -25,9 +25,10 @@ function Login() {
 
     const handleLogin = async () => {
         if (userid !== "" && password !== "" && acctype !== "") {
+            console.log(userid);
             try {
                 setIsLoading(true);
-                const url = BASE_URL + `/login`;
+                const url = BASE_URL+`/login/${userid}`;
                 const data = await axios.post(url, { payload });
                 setIsLoading(false);
                 if (data.success) {
