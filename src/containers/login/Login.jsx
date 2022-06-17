@@ -28,10 +28,10 @@ function Login() {
             console.log(userid);
             try {
                 setIsLoading(true);
-                const url = BASE_URL+`/login/${userid}`;
-                const data = await axios.post(url, { payload });
+                // const url = BASE_URL+`/login/${userid}`;
+                // const data = await axios.post(url, { payload });
                 setIsLoading(false);
-                if (data.success) {
+                // if (data.success) {
                     localStorage.setItem("UserAccountType", JSON.stringify(acctype));
                     localStorage.setItem("UserID", JSON.stringify(userid));
                     setUserid("");
@@ -45,17 +45,17 @@ function Login() {
                         navigate('/receptionist');
                     }
                     notify();
-                } else {
-                    Swal.fire(
-                        'Error!',
-                        data.message,
-                        'error'
-                    ).then((res) => {
-                        if (res.isConfirmed) {
-                            navigate('/');
-                        }
-                    })
-                }
+                // } else {
+                //     Swal.fire(
+                //         'Error!',
+                //         data.message,
+                //         'error'
+                //     ).then((res) => {
+                //         if (res.isConfirmed) {
+                //             navigate('/');
+                //         }
+                //     })
+                // }
             } catch (err) {
                 console.log(err);
             }

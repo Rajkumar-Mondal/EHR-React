@@ -150,12 +150,12 @@ export default function Admin() {
         justifyContent: "space-between",
     }
 
-    if ((localStorage.getItem("UserAccountType")) !== "admin") {
-        navigate("/");
-        localStorage.clear();
+    // if ((localStorage.getItem("UserAccountType")) !== "admin") {
+    //     navigate("/");
+    //     localStorage.clear();
 
 
-    } else {
+    // } else {
         return (
             <div className='admin-dashboard' >
                 <Box sx={{ display: 'flex' }}  >
@@ -278,4 +278,4 @@ export default function Admin() {
             </div>
         );
     }
-}
+// }
